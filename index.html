@@ -377,6 +377,85 @@ window.onload = function(){
 }
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+
+const SUPABASE_URL =
+'https://yapxchswhbmhrlqxlvjs.supabase.co';
+
+const SUPABASE_KEY =
+'TA_CLE_PUBLISHABLE_COMPLETE';
+
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+async function enregistrerBilan() {
+
+    const bilan = {
+
+        date_intervention:
+            document.getElementById('date').value,
+
+        victime:
+            document.getElementById('nom').value + ' ' +
+            document.getElementById('prenom').value,
+
+        constantes:
+            JSON.stringify({
+
+                fc:
+                    document.getElementById('fc').value,
+
+                ta:
+                    document.getElementById('ta').value,
+
+                fr:
+                    document.getElementById('fr').value,
+
+                spo2:
+                    document.getElementById('spo2').value,
+
+                temperature:
+                    document.getElementById('temp').value,
+
+                glycemie:
+                    document.getElementById('glycemie').value
+
+            }),
+
+        observations:
+            document.getElementById('observations').value,
+
+        destination:
+            document.getElementById('destination').value,
+
+        partage_id:
+            crypto.randomUUID()
+
+    };
+
+    const { error } =
+    await supabaseClient
+        .from('bilans')
+        .insert([bilan]);
+
+    if (error) {
+
+        alert(
+            'Erreur : ' +
+            error.message
+        );
+
+        return;
+    }
+
+    alert('Bilan enregistré !');
+}
+
+</script>
 </body>
 </html>
