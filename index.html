@@ -445,13 +445,15 @@ async function enregistrerBilan() {
 
     if (error) {
 
-        alert(
-            'Erreur : ' +
-            error.message
-        );
+    console.log(error);
 
-        return;
-    }
+    alert(
+        'Erreur : ' +
+        JSON.stringify(error)
+    );
+
+    return;
+}
 
     alert('Bilan enregistré !');
 }
