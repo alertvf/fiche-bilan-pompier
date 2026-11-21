@@ -173,4 +173,210 @@ button{
 </div>
 </fieldset>
 
-<fieldset
+<fieldset>
+<legend>Constantes</legend>
+
+<div class="grid">
+
+<div>
+<label>FC</label>
+<input type="text" id="fc">
+</div>
+
+<div>
+<label>TA</label>
+<input type="text" id="ta">
+</div>
+
+<div>
+<label>FR</label>
+<input type="text" id="fr">
+</div>
+
+<div>
+<label>SpO₂</label>
+<input type="text" id="spo2">
+</div>
+
+<div>
+<label>Température</label>
+<input type="text" id="temp">
+</div>
+
+<div>
+<label>Glycémie</label>
+<input type="text" id="glycemie">
+</div>
+
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Évaluation</legend>
+
+<div class="grid">
+
+<div>
+<label>Glasgow</label>
+<select id="glasgow">
+<option>15</option>
+<option>14</option>
+<option>13</option>
+<option>12</option>
+<option>11</option>
+<option>10</option>
+<option>9</option>
+<option>8</option>
+<option>7</option>
+<option>6</option>
+<option>5</option>
+<option>4</option>
+<option>3</option>
+</select>
+</div>
+
+<div>
+<label>EVA Douleur</label>
+<select id="eva">
+<option>0 - Aucune douleur</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10 - Douleur maximale</option>
+</select>
+</div>
+
+</div>
+
+<div style="margin-top:10px;">
+<label>Localisation douleur</label>
+<input type="text" id="douleur">
+</div>
+
+</fieldset>
+
+<fieldset>
+<legend>Médical</legend>
+
+<label>Antécédents</label>
+<textarea id="antecedents" rows="3"></textarea>
+
+<label>Allergies</label>
+<textarea id="allergies" rows="3"></textarea>
+
+<label>Traitements habituels</label>
+<textarea id="traitements" rows="3"></textarea>
+
+</fieldset>
+
+<fieldset>
+<legend>Bilan</legend>
+
+<label>Motif</label>
+<textarea id="motif" rows="4"></textarea>
+
+<label>Observations</label>
+<textarea id="observations" rows="6"></textarea>
+
+</fieldset>
+
+<fieldset>
+<legend>Destination</legend>
+
+<label>Destination</label>
+<select id="destination">
+<option>CH Amboise</option>
+<option>Laissé sur place</option>
+</select>
+
+</fieldset>
+
+<div class="buttons">
+
+<button type="button" class="new" onclick="nouveauBilan()">
+➕ Nouveau bilan
+</button>
+
+<button type="button" class="save" onclick="enregistrerLocal()">
+💾 Sauvegarder localement
+</button>
+
+<button type="button" class="copy" onclick="copierBilan()">
+📋 Copier le bilan
+</button>
+
+<button type="button" class="print" onclick="window.print()">
+🖨️ Export PDF
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+function nouveauBilan(){
+    document.getElementById('bilanForm').reset();
+}
+
+function enregistrerLocal(){
+
+    const data = {};
+
+    document.querySelectorAll('input,textarea,select').forEach(el=>{
+        data[el.id]=el.value;
+    });
+
+    localStorage.setItem(
+        "dernier_bilan",
+        JSON.stringify(data)
+    );
+
+    alert("Bilan sauvegardé.");
+}
+
+function copierBilan(){
+
+    let texte = "";
+
+    document.querySelectorAll("input,textarea,select").forEach(el=>{
+        texte += el.id + " : " + el.value + "\n";
+    });
+
+    navigator.clipboard.writeText(texte);
+
+    alert("Bilan copié.");
+}
+
+window.onload = function(){
+
+    const bilan =
+        localStorage.getItem("dernier_bilan");
+
+    if(bilan){
+
+        const data = JSON.parse(bilan);
+
+        for(let champ in data){
+
+            const element =
+                document.getElementById(champ);
+
+            if(element)
+                element.value = data[champ];
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
