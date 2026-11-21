@@ -387,10 +387,11 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhcHhjaHN3aGJtaHJscXhseWpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyOTU0NDksImV4cCI6MjExMDg3MTQ0OX0.J4jaIr6JO4YTHKaTtg1jSqbEALVVhDqX6HwTIc1jtic';
 
-const supabaseClient =
-supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 async function enregistrerBilan() {
