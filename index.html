@@ -439,10 +439,19 @@ async function enregistrerBilan() {
 
     };
 
-    const { error } =
-    await supabaseClient
-        .from('bilans')
-        .insert([bilan]);
+  const response = await supabaseClient
+.from('bilans')
+.insert([bilan])
+.select();
+
+console.log(response);
+
+const error = response.error;
+
+if (error) {
+    alert(JSON.stringify(error));
+    return;
+}
 
     if (error) {
 
