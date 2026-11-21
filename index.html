@@ -1,1 +1,176 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiche Bilan Pompier</title><style>body{font-family:Arial,sans-serif;margin:20px;max-width:1000px}fieldset{margin:12px 0;padding:12px}label{display:block;margin-top:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}input,textarea,select{width:100%;padding:6px;box-sizing:border-box}h1{text-align:center}.print{margin:10px 0}</style></head><body><h1>Fiche Bilan Pompier</h1><button class="print" onclick="window.print()">Imprimer</button><form><fieldset><legend>Intervention</legend><div class="grid"><div><label>Date<input type="date"></label></div><div><label>Heure<input type="time"></label></div><div><label>Numéro d'intervention<input type="text"></label></div></div></fieldset><fieldset><legend>Victime</legend><div class="grid"><div><label>Nom<input type="text"></label></div><div><label>Prénom<input type="text"></label></div><div><label>Âge<input type="number"></label></div><div><label>Sexe<select><option>Homme</option><option>Femme</option></select></label></div></div></fieldset><fieldset><legend>Constantes</legend><div class="grid"><label>FC<input type="text"></label><label>TA<input type="text"></label><label>SpO2<input type="text"></label><label>FR<input type="text"></label><label>Température<input type="text"></label><label>Glycémie<input type="text"></label></div></fieldset><fieldset><legend>Bilan</legend><label>Motif<textarea rows="3"></textarea></label><label>Observations<textarea rows="5"></textarea></label><label>Gestes effectués<textarea rows="4"></textarea></label></fieldset><fieldset><legend>Évacuation</legend><div class="grid"><label>Destination<input type="text"></label><label>Moyen de transport<input type="text"></label></div></fieldset></form></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Bilan Pompier</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:20px;
+    background:#f5f5f5;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#c00000;
+}
+
+fieldset{
+    background:white;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:15px;
+    padding:15px;
+}
+
+legend{
+    font-weight:bold;
+    color:#c00000;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:10px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:8px;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+.buttons{
+    text-align:center;
+    margin-top:20px;
+}
+
+button{
+    padding:10px 15px;
+    margin:5px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.save{
+    background:#28a745;
+    color:white;
+}
+
+.new{
+    background:#007bff;
+    color:white;
+}
+
+.print{
+    background:#dc3545;
+    color:white;
+}
+
+.copy{
+    background:#ff9800;
+    color:white;
+}
+
+@media print{
+    button{
+        display:none;
+    }
+
+    body{
+        background:white;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🚒 Fiche Bilan Pompier</h1>
+
+<form id="bilanForm">
+
+<fieldset>
+<legend>Intervention</legend>
+
+<div class="grid">
+
+<div>
+<label>Date</label>
+<input type="date" id="date">
+</div>
+
+<div>
+<label>Heure</label>
+<input type="time" id="heure">
+</div>
+
+<div>
+<label>N° Intervention</label>
+<input type="text" id="intervention">
+</div>
+
+<div>
+<label>Zone d'intervention</label>
+<input type="text" id="zone">
+</div>
+
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Victime</legend>
+
+<div class="grid">
+
+<div>
+<label>Nom</label>
+<input type="text" id="nom">
+</div>
+
+<div>
+<label>Prénom</label>
+<input type="text" id="prenom">
+</div>
+
+<div>
+<label>Âge</label>
+<input type="number" id="age">
+</div>
+
+<div>
+<label>Sexe</label>
+<select id="sexe">
+<option>Homme</option>
+<option>Femme</option>
+</select>
+</div>
+
+</div>
+</fieldset>
+
+<fieldset
