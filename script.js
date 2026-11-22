@@ -97,7 +97,10 @@ function newBil() {
 
     editIndex = -1;
 }
+function renderHistorique() {
 
+    const filtre =
+        search.value.toLowerCase();
 let historique =
     sharedHistory;
 
@@ -115,7 +118,10 @@ historique =
             .includes(filtre)
         )
     );
-
+console.log("Historique filtré :", historique);
+    
+alert("Historique filtré : " + historique.length);
+    
     histBody.innerHTML =
         historique.map((b, i) => `
 
@@ -144,10 +150,7 @@ onclick="showBil(${i})">
 
 function showBil(i) {
 
-    const historique =
-        JSON.parse(localStorage.getItem("bilans") || "[]");
-
-    const b = historique[i];
+    const b = sharedHistory[i];
 
     modalContent.innerHTML = `
 
