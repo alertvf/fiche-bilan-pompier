@@ -168,7 +168,7 @@ function showBil(i) {
 
     modalContent.innerHTML = `
 
-    <h2>${b.Nom || ""} ${b["Prénom"] || ""}</h2>
+    <h2>Fiche bilan n° ${b.numeroIntervention || ""}</h2>
 
 <p><b>N° Intervention :</b> ${b.numeroIntervention || ""}</p>
 <p><b>Zone :</b> ${b.zone || ""}</p>
