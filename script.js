@@ -120,8 +120,6 @@ historique =
     );
 console.log("Historique filtré :", historique);
     
-alert("Historique filtré : " + historique.length);
-    
     histBody.innerHTML = "";
 
 historique.forEach((b, i) => {
@@ -325,8 +323,6 @@ async function chargerHistoriquePartage() {
 
         sharedHistory =
             await response.json();
-
-        alert("Bilans trouvés : " + sharedHistory.length);
 
         console.log("Historique partagé :", sharedHistory);
  
