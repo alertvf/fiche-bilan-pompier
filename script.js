@@ -168,16 +168,12 @@ function showBil(i) {
 
     modalContent.innerHTML = `
 
-   <p><b>Numéro intervention :</b> ${b.numeroIntervention || ""}</p>
-
     <h2>${b.Nom || ""} ${b["Prénom"] || ""}</h2>
 
-    <h3>Intervention</h3>
+    <h3>Intervention n° ${b.numeroIntervention || ""}</h3>
 
-    <p><b>Date :</b> ${b.Date || ""}</p>
-    <p><b>Heure :</b> ${b.Heure || ""}</p>
-    <p><b>Numéro intervention :</b> ${b.numeroIntervention || ""}</p>
-    <p><b>Zone :</b> ${b.Zone || ""}</p>
+<p><b>N° Intervention :</b> ${b.numeroIntervention || ""}</p>
+<p><b>Zone :</b> ${b.zone || ""}</p>
 
     <hr>
 
