@@ -56,7 +56,8 @@ async function saveBil() {
         JSON.stringify(historique)
     );
 
-    renderHistorique();
+    ;
+renderHistorique();
 
     try {
         await fetch(WEBAPP, {
