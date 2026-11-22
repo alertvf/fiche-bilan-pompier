@@ -148,14 +148,14 @@ historique.forEach((b, i) => {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-    <td>${b.numeroIntervention || ""}</td>
-    <td>${b.Nom || b.nom || ""}</td>
-    <td>${b.Zone || b.zone || ""}</td>
-    <td>
-        <button onclick="showBil(${i})">
-            👁 Voir
-        </button>
-    </td>
+<td>${b.numeroIntervention || "-"}</td>
+<td>${b.Nom || b.nom || ""}</td>
+<td>${b.Zone || b.zone || ""}</td>
+<td>
+<button onclick="showBil(${i})">
+👁 Voir
+</button>
+</td>
 `;
 
     histBody.appendChild(row);
