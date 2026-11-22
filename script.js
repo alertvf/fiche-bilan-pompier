@@ -75,6 +75,9 @@ async function saveBil() {
     ;
 renderHistorique();
 
+    console.log("NUMERO :", bilan.numeroIntervention);
+console.log(bilan);
+
     try {
         await fetch(WEBAPP, {
             method: "POST",
