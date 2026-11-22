@@ -208,7 +208,7 @@ function showBil(i) {
 
     `;
 
-    modal.style.display = "block";
+     = "block";
 
 }
 async function chargerHistoriquePartage() {
