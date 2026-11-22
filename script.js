@@ -337,7 +337,9 @@ async function chargerHistoriquePartage() {
         sharedHistory =
             await response.json();
 
-        console.log(sharedHistory);
+        console.log("Historique partagé :", sharedHistory);
+ 
+renderHistorique();
 
     } catch (err) {
 
