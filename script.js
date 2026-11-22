@@ -45,12 +45,27 @@ async function saveBil() {
     let historique =
         JSON.parse(localStorage.getItem("bilans") || "[]");
 
-    if (editIndex > -1) {
-        historique[editIndex] = bilan;
-        editIndex = -1;
-    } else {
-        historique.unshift(bilan);
-    }
+   if (editIndex > -1) {
+
+    bilan.numeroIntervention =
+        historique[editIndex].numeroIntervention;
+
+    historique[editIndex] = bilan;
+    editIndex = -1;
+
+} else {
+
+    const maintenant = new Date();
+
+    bilan.numeroIntervention =
+        maintenant.getFullYear().toString() +
+        String(maintenant.getMonth() + 1).padStart(2, "0") +
+        String(maintenant.getDate()).padStart(2, "0") +
+        "-" +
+        Date.now().toString().slice(-4);
+
+    historique.unshift(bilan);
+}
 
     localStorage.setItem(
         "bilans",
@@ -150,13 +165,15 @@ function showBil(i) {
 
     modalContent.innerHTML = `
 
+   <p><b>Numéro intervention :</b> ${b.numeroIntervention || ""}</p>
+
     <h2>${b.Nom || ""} ${b["Prénom"] || ""}</h2>
 
     <h3>Intervention</h3>
 
     <p><b>Date :</b> ${b.Date || ""}</p>
     <p><b>Heure :</b> ${b.Heure || ""}</p>
-    <p><b>Numéro intervention :</b> ${b.Intervention || ""}</p>
+    <p><b>Numéro intervention :</b> ${b.numeroIntervention || ""}</p>
     <p><b>Zone :</b> ${b.Zone || ""}</p>
 
     <hr>
