@@ -209,7 +209,7 @@ function showBil(i) {
 
     `;
 
-     = "block";
+modal.style.display = "block";
 
 }
 async function chargerHistoriquePartage() {
