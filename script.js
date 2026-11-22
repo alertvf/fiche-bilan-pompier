@@ -122,31 +122,28 @@ console.log("Historique filtré :", historique);
     
 alert("Historique filtré : " + historique.length);
     
-    histBody.innerHTML =
-        historique.map((b, i) => `
+    histBody.innerHTML = "";
 
-<tr>
+historique.forEach((b, i) => {
 
-<td>${b.Date || ""}</td>
+    const row = document.createElement("tr");
 
-<td>${b.Nom || ""} ${b["Prénom"] || ""}</td>
+    row.innerHTML = `
+        <td>${b.Date || ""}</td>
+        <td>${b.Nom || ""} ${b["Prénom"] || ""}</td>
+        <td>${b.Intervention || ""}</td>
+        <td>
+            <button onclick="showBil(${i})">
+                👁 Voir
+            </button>
+        </td>
+    `;
 
-<td>${b.Intervention || ""}</td>
+    histBody.appendChild(row);
 
-<td>
+});
 
-<button
-class="btn-view"
-onclick="showBil(${i})">
-👁 Voir
-</button>
-
-</td>
-
-</tr>
-
-`).join("");
-}
+    }
 
 function showBil(i) {
 
