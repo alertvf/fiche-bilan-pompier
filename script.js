@@ -134,18 +134,6 @@ onclick="showBil(${i})">
 👁 Voir
 </button>
 
-<button
-class="btn-edit"
-onclick="editBil(${i})">
-✏ Modifier
-</button>
-
-<button
-class="btn-delete"
-onclick="deleteBil(${i})">
-🗑 Supprimer
-</button>
-
 </td>
 
 </tr>
