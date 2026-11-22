@@ -170,8 +170,6 @@ function showBil(i) {
 
     <h2>${b.Nom || ""} ${b["Prénom"] || ""}</h2>
 
-    <h3>Intervention n° ${b.numeroIntervention || ""}</h3>
-
 <p><b>N° Intervention :</b> ${b.numeroIntervention || ""}</p>
 <p><b>Zone :</b> ${b.zone || ""}</p>
 
