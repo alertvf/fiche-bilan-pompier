@@ -143,6 +143,8 @@ console.log("Historique filtré :", historique);
 
 historique.forEach((b, i) => {
 
+    console.log(b);
+    
     const row = document.createElement("tr");
 
     row.innerHTML = `
