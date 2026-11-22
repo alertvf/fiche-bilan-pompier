@@ -325,6 +325,8 @@ async function chargerHistoriquePartage() {
         sharedHistory =
             await response.json();
 
+        alert("Bilans trouvés : " + sharedHistory.length);
+
         console.log("Historique partagé :", sharedHistory);
  
 renderHistorique();
