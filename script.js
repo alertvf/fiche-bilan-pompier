@@ -242,3 +242,9 @@ window.onload = async () => {
     await chargerHistoriquePartage();
 
 };
+
+function closeModal() {
+
+    document.getElementById("modal").style.display = "none";
+
+}
