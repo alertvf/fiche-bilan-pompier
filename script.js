@@ -149,170 +149,67 @@ function showBil(i) {
 
     modalContent.innerHTML = `
 
-<h2>${b.nom} ${b.prenom}</h2>
+    <h2>${b.Nom || ""} ${b["Prénom"] || ""}</h2>
 
-<h3>Intervention</h3>
+    <h3>Intervention</h3>
 
-<p><b>Date :</b> ${b.date}</p>
-<p><b>Heure :</b> ${b.heure}</p>
-<p><b>Numéro intervention :</b> ${b.intervention}</p>
-<p><b>Zone :</b> ${b.zone}</p>
+    <p><b>Date :</b> ${b.Date || ""}</p>
+    <p><b>Heure :</b> ${b.Heure || ""}</p>
+    <p><b>Numéro intervention :</b> ${b.Intervention || ""}</p>
+    <p><b>Zone :</b> ${b.Zone || ""}</p>
 
-<hr>
+    <hr>
 
-<h3>Victime</h3>
+    <h3>Victime</h3>
 
-<p><b>Nom :</b> ${b.nom}</p>
-<p><b>Prénom :</b> ${b.prenom}</p>
-<p><b>Âge :</b> ${b.age}</p>
-<p><b>Sexe :</b> ${b.sexe}</p>
+    <p><b>Nom :</b> ${b.Nom || ""}</p>
+    <p><b>Prénom :</b> ${b["Prénom"] || ""}</p>
+    <p><b>Âge :</b> ${b["Âge"] || ""}</p>
+    <p><b>Sexe :</b> ${b.Sexe || ""}</p>
 
-<hr>
+    <hr>
 
-<h3>Constantes</h3>
+    <h3>Constantes</h3>
 
-<p><b>Fréquence cardiaque :</b> ${b.fc}</p>
+    <p><b>Fréquence cardiaque :</b> ${b.FC || ""}</p>
+    <p><b>Tension artérielle :</b> ${b.TA || ""}</p>
+    <p><b>Fréquence respiratoire :</b> ${b.FR || ""}</p>
+    <p><b>Saturation en oxygène :</b> ${b.SAT || ""}</p>
+    <p><b>Température :</b> ${b["Température"] || ""}</p>
+    <p><b>Glycémie :</b> ${b["Glycémie"] || ""}</p>
 
-<p><b>Tension artérielle :</b> ${b.ta}</p>
+    <hr>
 
-<p><b>Fréquence respiratoire :</b> ${b.fr}</p>
+    <h3>Évaluation</h3>
 
-<p><b>Saturation en oxygène :</b> ${b.sat}</p>
+    <p><b>Score de Glasgow :</b> ${b.Glasgow || ""}</p>
+    <p><b>EVA :</b> ${b.EVA || ""}</p>
+    <p><b>Localisation douleur :</b> ${b["Localisation douleur"] || ""}</p>
 
-<p><b>Température :</b> ${b.temperature}</p>
+    <hr>
 
-<p><b>Glycémie :</b> ${b.glycemie}</p>
+    <h3>Médical</h3>
 
-<hr>
+    <p><b>Antécédents :</b><br>${b["Antécédents"] || ""}</p>
 
-<h3>Évaluation</h3>
+    <p><b>Allergies :</b><br>${b.Allergies || ""}</p>
 
-<p><b>Score de Glasgow :</b> ${b.glasgow}</p>
+    <p><b>Traitements :</b><br>${b.Traitements || ""}</p>
 
-<p><b>EVA :</b> ${b.eva}</p>
+    <hr>
 
-<p><b>Localisation douleur :</b>
-${b.localisationDouleur}</p>
+    <h3>Bilan</h3>
 
-<hr>
+    <p><b>Motif :</b><br>${b.Motif || ""}</p>
 
-<h3>Médical</h3>
+    <p><b>Observations :</b><br>${b.Observations || ""}</p>
 
-<p><b>Antécédents :</b><br>
-${b.antecedents}</p>
+    <p><b>Destination :</b><br>${b.Destination || ""}</p>
 
-<p><b>Allergies :</b><br>
-${b.allergies}</p>
-
-<p><b>Traitements :</b><br>
-${b.traitements}</p>
-
-<hr>
-
-<h3>Bilan</h3>
-
-<p><b>Motif :</b><br>
-${b.motif}</p>
-
-<p><b>Observations :</b><br>
-${b.observations}</p>
-
-<p><b>Destination :</b><br>
-${b.destination}</p>
-
-<hr>
-
-<button onclick="window.print()">
-🖨️ Imprimer ce bilan
-</button>
-
-`;
+    `;
 
     modal.style.display = "block";
-}
 
-function closeModal() {
-    modal.style.display = "none";
-}
-
-function editBil(i) {
-
-    const historique =
-        JSON.parse(localStorage.getItem("bilans") || "[]");
-
-    const b = historique[i];
-
-    date.value = b.date || "";
-    heure.value = b.heure || "";
-    intervention.value = b.intervention || "";
-    zone.value = b.zone || "";
-
-    nom.value = b.nom || "";
-    prenom.value = b.prenom || "";
-    age.value = b.age || "";
-    sexe.value = b.sexe || "";
-
-    fc.value = b.fc || "";
-    ta.value = b.ta || "";
-    fr.value = b.fr || "";
-    sat.value = b.sat || "";
-
-    temp.value = b.temperature || "";
-    glycemie.value = b.glycemie || "";
-
-    glasgow.value = b.glasgow || "";
-    eva.value = b.eva || "";
-
-    douleur.value =
-        b.localisationDouleur || "";
-
-    antecedents.value =
-        b.antecedents || "";
-
-    allergies.value =
-        b.allergies || "";
-
-    traitements.value =
-        b.traitements || "";
-
-    motif.value =
-        b.motif || "";
-
-    observations.value =
-        b.observations || "";
-
-    destination.value =
-        b.destination || "";
-
-    editIndex = i;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function deleteBil(i) {
-
-    if (
-        !confirm(
-            "Supprimer ce bilan ?"
-        )
-    ) {
-        return;
-    }
-
-    let historique =
-        JSON.parse(localStorage.getItem("bilans") || "[]");
-
-    historique.splice(i, 1);
-
-    localStorage.setItem(
-        "bilans",
-        JSON.stringify(historique)
-    );
-
-    renderHistorique();
 }
 async function chargerHistoriquePartage() {
 
